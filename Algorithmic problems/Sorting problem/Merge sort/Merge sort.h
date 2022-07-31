@@ -43,7 +43,7 @@ auto merge(Iter begin, Iter mid, Iter end, Comp less = std::less<const Elem_T&>{
     }
 }
 
-template <typename Iter, typename Elem_T = decltype(*Iter()), typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
+template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
 auto split(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
                             -> std::enable_if<std::is_same<typename std::iterator_traits<Iter>::iterator_category, 
                                                            typename std::random_access_iterator_tag>::value,
@@ -57,7 +57,7 @@ auto split(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
     }
 }
 
-template <typename Iter, typename Elem_T = decltype(*Iter()), typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
+template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
 auto merge_sort(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
                             -> std::enable_if<std::is_same<typename std::iterator_traits<Iter>::iterator_category, 
                                                            typename std::random_access_iterator_tag>::value,
