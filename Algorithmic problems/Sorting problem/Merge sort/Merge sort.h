@@ -26,13 +26,13 @@ auto merge(Iter begin, Iter mid, Iter end, Comp less = std::less<const Elem_T&>{
             buffer.push_back(*l_ptr);
             ++l_id;
         }
-        else if (less(*l_ptr, *r_ptr)) {
-            buffer.push_back(*l_ptr);
-            ++l_id;
-        }
-        else {
+        else if (less(*r_ptr, *l_ptr)) {
             buffer.push_back(*r_ptr);
             ++r_id;
+        }
+        else {
+            buffer.push_back(*l_ptr);
+            ++l_id;
         }
     }
     
