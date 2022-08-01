@@ -12,7 +12,7 @@
 #define elem_at(begin, id) (*((begin) + (id)))
 
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
-auto max_heapify(long long cur, Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
+auto max_heapify(long long cur, Iter begin, Iter end, const Comp& less = std::less<const Elem_T&>{})
                                 -> std::enable_if_t<std::is_same<typename std::iterator_traits<Iter>::iterator_category,
                                                                  typename std::random_access_iterator_tag>::value,
                                                     void> {
@@ -44,7 +44,7 @@ auto max_heapify(long long cur, Iter begin, Iter end, Comp less = std::less<cons
 
 
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
-auto build_max_heap(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
+auto build_max_heap(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&>{})
                                 -> std::enable_if_t<std::is_same<typename std::iterator_traits<Iter>::iterator_category,
                                                                  typename std::random_access_iterator_tag>::value,
                                                     void> {
@@ -53,7 +53,7 @@ auto build_max_heap(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{}
 }
 
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
-auto move_max_to_back(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
+auto move_max_to_back(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&>{})
                                 -> std::enable_if_t<std::is_same<typename std::iterator_traits<Iter>::iterator_category,
                                                                  typename std::random_access_iterator_tag>::value,
                                                     void> {
@@ -64,7 +64,7 @@ auto move_max_to_back(Iter begin, Iter end, Comp less = std::less<const Elem_T&>
 }
 
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
-auto heap_sort(Iter begin, Iter end, Comp less = std::less<const Elem_T&>{})
+auto heap_sort(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&>{})
                                 -> std::enable_if_t<std::is_same<typename std::iterator_traits<Iter>::iterator_category,
                                                                  typename std::random_access_iterator_tag>::value,
                                                     void> {
