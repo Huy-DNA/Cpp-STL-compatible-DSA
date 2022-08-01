@@ -1,10 +1,10 @@
 # Merge sort
 Notes about this implementation of merge sort:
 * Time complexity:
-    * Average-case running time: $O(\lg n)$
-    * Best-case running time: $O(\lg n)$
-    * Worst-case running time: $O(\lg n)$
-* Space complexity: $O(\lg n)$
+    * Average-case running time: $\Theta(\lg n)$
+    * Best-case running time: $\Theta(\lg n)$
+    * Worst-case running time: $\Theta(\lg n)$
+* Space complexity: $\Theta(\lg n)$
 * Other technical:
     * Stable
     * NOT in-place

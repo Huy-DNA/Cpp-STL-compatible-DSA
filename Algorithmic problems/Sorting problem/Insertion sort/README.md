@@ -1,10 +1,10 @@
 # Insertion sort
 Notes about this implementation of insertion sort:
 * Time complexity:
-    * Average-case running time: $O(n^2)$
-    * Best-case running time: $O(n)$
-    * Worst-case running time: $O(n^2)$
-* Space complexity: $O(1)$
+    * Average-case running time: $\Theta(n^2)$
+    * Best-case running time: $\Theta(n)$
+    * Worst-case running time: $\Theta(n^2)$
+* Space complexity: $\Theta(1)$
 * Other technical:
     * Stable
     * In-place
