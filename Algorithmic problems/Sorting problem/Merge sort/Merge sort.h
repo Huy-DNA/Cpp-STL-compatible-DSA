@@ -4,7 +4,6 @@
 #include <iterator>
 #include <type_traits>
 #include <functional>
-#include <iostream>
 
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>, typename Comp = std::function<bool(const Elem_T&, const Elem_T&)>>
 auto merge(Iter begin, Iter mid, Iter end, Comp less = std::less<const Elem_T&>{})
