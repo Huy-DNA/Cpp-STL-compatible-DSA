@@ -2,7 +2,6 @@
 #define __INSERTION_SORT_HELL__
 
 #include <iterator>
-#include <iostream>
 #include <type_traits>
 #include <functional>
 
