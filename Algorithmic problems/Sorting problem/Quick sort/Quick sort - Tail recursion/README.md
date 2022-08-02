@@ -5,5 +5,4 @@ Notice that in the normal implementation of Quick sort, we make a recursion call
     * Expected running time: $\Theta(n\lg n)$ (same)
     * Worst-case running time: $\Theta(n^2)$ (same)
 * Space complexity:
-    * Worst-case: $\Theta(\lg n)$
-    
+    * Worst-case: $\Theta(\lg n)$ (improved!)
