@@ -14,7 +14,7 @@ auto quick_sort(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&
                                                 void> {
     using std::swap;
 
-    static std::mt19937_64 mt;
+    static std::mt19937_64 mt{0};
 
     while (begin < end - 1) {
         const long long len = end - begin;
@@ -35,6 +35,12 @@ auto quick_sort(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&
             }
         }
         
+        //Tail recursion: only one recursive call is needed!
+        /*----------------------------------*/
+        //Recursively sort the "shorter" part between l and g
+        //Let the loop handle the longer part
+        //Because the shorter part is less than half the original length,
+        //There would be at most lg n stack frames on the call stack
         if (less_right < len - greater_left) {
             quick_sort(begin, begin + less_right, less);
             begin += greater_left + 1;
@@ -42,6 +48,7 @@ auto quick_sort(Iter begin, Iter end, const Comp& less = std::less<const Elem_T&
             quick_sort(begin + greater_left + 1, end, less);
             end = begin + less_right;
         }
+        /*----------------------------------*/
     }
 }
 
