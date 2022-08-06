@@ -17,3 +17,4 @@ Notes about this implementation of Bucket sort:
 
 Observations:
 * Among the linear-time sorting algorithms I have implemented, this is the only one that works with floating point numbers and also relies on its fast average-case running time.
+* Actually even if the elements are not generated from a uniform distribution but we know the continous probability distribution function $P$ that is used to yield those elements, we can modify Bucket sort to sort them in linear time as well!
