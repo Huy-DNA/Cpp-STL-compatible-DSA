@@ -1,5 +1,5 @@
 # Bucket sort
-> Say hellllo to the dreaded **Segmentation fault**. Implementing this algorithm has taught me the lesson to plan anything you're going to code me up front. It was a mess patching things up!!!.
+> Say hellllo to the dreaded **Segmentation fault**. Implementing this algorithm has taught me the lesson of properly planning anything you're going to code me up front. It was a mess patching things up!!!.
 
 Notes about this implementation of Bucket sort:
 * Assumptions:
