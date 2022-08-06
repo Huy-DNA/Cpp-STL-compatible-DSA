@@ -44,14 +44,14 @@ auto radix_sort(Iter begin, Iter end, unsigned long long k)
     
 }
 
-int log2_floor(unsigned long long n) {
+inline int log2_floor(unsigned long long n) {
     for (int i = 1;; ++i)
         if ((1 << i) > n)
             return i - 1;
     return -1;
 }
 
-int get_kth_rbit_group(unsigned long long n, int k, int r) {
+inline int get_kth_rbit_group(unsigned long long n, int k, int r) {
     unsigned long long bitmask = (1 << r) - 1;
     return (n >> ((k - 1) * r)) & bitmask;
 }
