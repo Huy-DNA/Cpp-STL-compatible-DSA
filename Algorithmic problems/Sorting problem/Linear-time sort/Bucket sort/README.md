@@ -11,8 +11,8 @@ Notes about this implementation of Bucket sort:
     * Worst-case running time: $\Theta(n^2)$ (ex. when all elements end up in one bucket)
 * Space complexity: $\Theta(n)$
 * Other technical:
-    * NOT stable because this specific version of Insertion sort is not stable). However, fixing this is quite trivial.
-    * NOT inplace
+    * NOT stable (because this specific version of Insertion sort is not stable). However, fixing this is quite trivial.
+    * NOT in-place
     * Only works with random-access iterator (in C++ terminology)
 
 Observations:
