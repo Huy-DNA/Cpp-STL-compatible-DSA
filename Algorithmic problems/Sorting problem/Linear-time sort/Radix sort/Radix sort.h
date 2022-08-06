@@ -6,8 +6,8 @@
 #include <iterator>
 #include "Stable sort.h"
 
-/*This function assumes that all elements or the fields 'key' of them are positive and of intergral type.
- The third parameter specify the upper bound of the elements or their 'key' values, so that they lie within [0, k].*/
+/*This function require that all elements or the fields 'key' of them be positive and of intergral type.
+ The third parameter specifies the upper bound of the elements or their 'key' values, so that they lie within [0, k].*/
 template <typename Iter, typename Elem_T = std::remove_reference_t<decltype(*Iter())>>
 auto radix_sort(Iter begin, Iter end, unsigned long long k)
                     -> std::enable_if_t<std::is_same<typename std::iterator_traits<Iter>::iterator_category,
@@ -19,7 +19,7 @@ auto radix_sort(Iter begin, Iter end, unsigned long long k)
     
     if (end - begin <= 1) return;
     const int bit_group_size = log2_floor(end - begin);         //Treat a digit as a group of 'bit_group_size' bits
-    const int max_digit = (1 << bit_group_size) - 1;
+    const int max_digit = (1 << bit_group_size) - 1;            //Maximum value a digit can have
     
     for (int i = 1; k > 0; k >>= bit_group_size, ++i)
         stable_sort(begin, end, max_digit, [=](unsigned long long n){return get_kth_rbit_group(n, i, bit_group_size);});
@@ -37,7 +37,7 @@ auto radix_sort(Iter begin, Iter end, unsigned long long k)
     
     if (end - begin <= 1) return;
     const int bit_group_size = log2_floor(end - begin);         //Treat a digit as a group of 'bit_group_size' bits
-    const int max_digit = (1 << bit_group_size) - 1;
+    const int max_digit = (1 << bit_group_size) - 1;            //Maximum value a digit can have
     
     for (int i = 1; k > 0; k >>= bit_group_size, ++i)
         stable_sort(begin, end, max_digit, [=](unsigned long long n){return get_kth_rbit_group(n, i, bit_group_size);});
