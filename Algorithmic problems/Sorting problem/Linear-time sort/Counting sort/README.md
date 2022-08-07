@@ -13,6 +13,6 @@ Notes about this implementation of counting sort:
     * NOT in-place
     * Only works with random-access iterators (in C++ terminology)
 
-Observations:
+Notes:
 * If $k = O(n)$ then the worst-case running time of counting sort would be $\Theta(n)$ which is optimal.
 * The property of Counting sort being stable is important as it's usually used as a subroutine of Radix sort, which requires that sorting subroutine to be stable.

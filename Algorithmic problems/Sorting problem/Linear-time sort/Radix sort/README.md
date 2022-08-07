@@ -13,7 +13,7 @@ Notes about this implementation of radix sort:
     * NOT in-place
     * Only works with random-access iterators (in C++ terminology)
 
-Observations:
+Notes:
 * In general, Radix sort's worst-case running time is: $T(n) = \Theta(d(n+b))$, with $b$ being the base in which the numbers are being represented, $d$ being the maximum number of digits used to represent each of the numbers in base $b$, $n$ being the number of elements.
 * With my implementation:
     * $b = 2^r$, $r = \lfloor\lg n \rfloor$.
