@@ -63,12 +63,12 @@ public:
     }
 
     /*Returns the current number of elements in the table.*/
-    inline size_t size() const {
+    inline const size_t& size() const {
         return _size;
     }
 
     /*Returns the maximum number of elements the table can hold before it needs to reallocate its internal buffer.*/
-    inline size_t capacity() const {
+    inline const size_t& capacity() const {
         return _capacity;
     }
 private:

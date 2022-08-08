@@ -5,9 +5,11 @@
 
 template <typename Elem_T>
 class Stack {
+    typedef std::size_t size_t;
 public:
-
+    
 private:
+    size_t top = 0;
     DynamicTable<Elem_T> dy_buffer;
 };
 
