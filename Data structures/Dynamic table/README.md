@@ -9,4 +9,3 @@ Notes about this implementation of Dynamic Table (DynamicTable):
         * Amortized running time: $\Theta(1)$
 
 ## Proof for armotized running time of **INSERT** and **DELETE** operations
-To be added.........................

@@ -10,6 +10,9 @@ class DynamicTable {
     typedef std::size_t size_t;
 public:
     DynamicTable() = default;
+    ~DynamicTable() {
+        delete[] buffer;
+    }
     DynamicTable(const DynamicTable&) = delete;
     DynamicTable& operator=(const DynamicTable&) = delete;
     
