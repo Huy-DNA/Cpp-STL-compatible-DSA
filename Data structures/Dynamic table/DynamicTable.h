@@ -16,6 +16,7 @@ public:
     DynamicTable(const DynamicTable&) = delete;
     DynamicTable& operator=(const DynamicTable&) = delete;
     
+    /*Copies and inserts the passed element into the table.*/
     void push_back(const Elem_T& e) {
         if (_size == _capacity) {
             Elem_T* sec_buffer = new Elem_T[_capacity * 2];
@@ -27,6 +28,7 @@ public:
         buffer[_size++] = e;
     }
     
+    /*Removes the last element from the table.*/
     Elem_T pop_back() {
         if (empty()) throw std::runtime_error{"DynamicTable::pop_back called on empty table."};
         
@@ -43,24 +45,29 @@ public:
         return popped_value;
     }
 
+    /*Returns whether the table is empty.*/
     inline bool empty() const {
         return _size == 0;
     }
 
+    /*Returns the last element.*/
     inline Elem_T& back() {
         if (empty()) throw std::runtime_error{"DynamicTable::back called on empty table."};
         return buffer[_size - 1];
     }
 
+    /*Returns the first element.*/
     inline Elem_T& front() {
         if (empty()) throw std::runtime_error{"DynamicTable::front called on empty table."};
         return buffer[0];
     }
 
+    /*Returns the current number of elements in the table.*/
     inline size_t size() const {
         return _size;
     }
 
+    /*Returns the maximum number of elements the table can hold before it needs to reallocate its internal buffer.*/
     inline size_t capacity() const {
         return _capacity;
     }
@@ -69,8 +76,8 @@ private:
         for (size_t i = 0; i < from_capacity; ++i)
             to_buffer[i] = from_buffer[i];
     }
-    size_t _capacity = 1;
-    size_t _size = 0;
+    size_t _capacity = 1;                       //The maximum number of elements the buffer can hold before having to be reallocated.
+    size_t _size = 0;                           //The current number of elements in the buffer.
     Elem_T* buffer = new Elem_T[_capacity];
 };
 
