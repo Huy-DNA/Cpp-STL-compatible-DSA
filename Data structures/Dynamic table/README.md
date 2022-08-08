@@ -9,5 +9,5 @@ Notes about this implementation of Dynamic Table (DynamicTable):
         * Amortized running time: $\Theta(1)$ 
 * Other technical:
     * Each time the internal buffer has to grow or shrink, the elements have to be copied, which triggers the type's copy constructor. This could be undesirable.
-
+    * It doesn't emulate vector well in many cases like when the element is popped, when the redundant array slots are first allocated,...
 ## Proof for armotized running time of **INSERT** and **DELETE** operations
