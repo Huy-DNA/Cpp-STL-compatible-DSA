@@ -6,6 +6,8 @@ Notes about this implementation of Dynamic Table (DynamicTable):
         * Amortized running time: $\Theta(1)$
     * **DELETE**: **DynamicTable**::pop_back()
         * Worst-case auxiliary space: $\Theta(n)$ (when shrinking capacity)
-        * Amortized running time: $\Theta(1)$
+        * Amortized running time: $\Theta(1)$ 
+* Other technical:
+    * Each time the internal buffer has to grow or shrink, the elements have to be copied, which triggers the type's copy constructor. This could be undesirable.
 
 ## Proof for armotized running time of **INSERT** and **DELETE** operations
