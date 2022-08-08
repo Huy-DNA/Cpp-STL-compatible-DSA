@@ -49,7 +49,7 @@ public:
 
     inline Elem_T& back() {
         if (empty()) throw std::runtime_error{"DynamicTable::back called on empty table."};
-        return buffer[_size- 1];
+        return buffer[_size - 1];
     }
 
     inline Elem_T& front() {
@@ -65,12 +65,12 @@ public:
         return _capacity;
     }
 private:
-    inline static void copy(Elem_T* from_buffer, size_t from__capacity, Elem_T* to_buffer) {
-        for (size_t i = 0; i < from__capacity; ++i)
+    inline static void copy(Elem_T* from_buffer, size_t from_capacity, Elem_T* to_buffer) {
+        for (size_t i = 0; i < from_capacity; ++i)
             to_buffer[i] = from_buffer[i];
     }
     size_t _capacity = 1;
-    size_t _size= 0;
+    size_t _size = 0;
     Elem_T* buffer = new Elem_T[_capacity];
 };
 
