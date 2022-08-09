@@ -3,6 +3,7 @@
 
 #include "../Dynamic table/DynamicTable.h"
 
+/*Uses are restricted to elements of TriviallyCopyableType.*/
 template <typename Elem_T>
 class Stack {
     typedef std::size_t size_t;

@@ -2,10 +2,13 @@
 #define __DYNAMIC_TABLE_HELL__
 
 #include <exception>
+#include <type_traits>
 
 /*This DynamicTable grows by double when its size exceeds its capacity
-  and shrinks by half when its size is no greater than a quarter of its capacity.*/
-template <typename Elem_T>
+  and shrinks by half when its size is no greater than a quarter of its capacity.
+  Uses are restricted to elements of TriviallyCopyableType.*/
+template <typename Elem_T, 
+          typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value, void>>
 class DynamicTable {
     typedef std::size_t size_t;
 public:
@@ -83,10 +86,11 @@ public:
         return _buffer[id];
     }
 private:
-    inline static void _copy(Elem_T* from_buffer, size_t from_capacity, Elem_T* to_buffer) {
-        for (size_t i = 0; i < from_capacity; ++i)
-            to_buffer[i] = from_buffer[i];
-    }
+    /*Copies content of `from_buffer` to `to_buffer`. Should only be called on arrays of TriviallyCopyableType.*/
+    static void _copy(Elem_T* from_buffer, size_t from_size, Elem_T* to_buffer) {
+        memcpy(to_buffer, from_buffer, sizeof(Elem_T) * from_size);
+    }   
+
     size_t _capacity = 1;                       //The maximum number of elements the buffer can hold before having to be reallocated.
     size_t _size = 0;                           //The current number of elements in the buffer.
     Elem_T* _buffer = new Elem_T[_capacity];
