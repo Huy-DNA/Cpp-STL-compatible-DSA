@@ -7,25 +7,33 @@ template <typename Elem_T>
 class Stack {
     typedef std::size_t size_t;
 public:
-    //constructor
-
-    void push(Elem_T e) {
-        dy_buffer.push_back(e);
+    /*Pushes the passed element to the stack.*/
+    void push(const Elem_T& e) {
+        _dy_buffer.push_back(e);
     }
+
+    /*Removes the last element and returns it.*/
     Elem_T pop() {
-        return dy_buffer.pop_back();
+        return _dy_buffer.pop_back();
     }
 
+    /*Checks if the stack is empty.*/
     bool empty() const {
-        return dy_buffer.empty();
+        return _dy_buffer.empty();
     }
 
+    /*Returns the element at the top.*/
     Elem_T& top() {
-        return dy_buffer.back();
+        return _dy_buffer.back();
     }
+
+    /*Returns the current number of elements on the stack.*/
+    size_t size() {
+        return _dy_buffer.size();
+    }
+
 private:
-    DynamicTable<Elem_T> dy_buffer;
-    const size_t& top = dy_buffer.size();
+    DynamicTable<Elem_T> _dy_buffer;
 };
 
 #endif

@@ -11,7 +11,7 @@ class DynamicTable {
 public:
     DynamicTable() = default;
     ~DynamicTable() {
-        delete[] buffer;
+        delete[] _buffer;
     }
     DynamicTable(const DynamicTable&) = delete;
     DynamicTable& operator=(const DynamicTable&) = delete;
@@ -19,25 +19,25 @@ public:
     /*Copies and inserts the passed element into the table.*/
     void push_back(const Elem_T& e) {
         if (_size == _capacity) {
-            Elem_T* sec_buffer = new Elem_T[_capacity * 2];
-            copy(buffer, _size, sec_buffer);
-            delete[] buffer;
-            buffer = sec_buffer;
+            Elem_T* _sec_buffer = new Elem_T[_capacity * 2];
+            _copy(_buffer, _size, _sec_buffer);
+            delete[] _buffer;
+            _buffer = _sec_buffer;
             _capacity *= 2;
         }
-        buffer[_size++] = e;
+        _buffer[_size++] = e;
     }
     
-    /*Removes the last element from the table.*/
+    /*Removes the last element from the table and returns it.*/
     Elem_T pop_back() {
         if (empty()) throw std::runtime_error{"DynamicTable::pop_back called on empty table."};
         
         const Elem_T popped_value = back();
         if (_capacity > 1 && _size - 1 <= _capacity / 4) {
-            Elem_T* sec_buffer = new Elem_T[_capacity / 2];
-            copy(buffer, _size - 1, sec_buffer);
-            delete[] buffer;
-            buffer = sec_buffer;
+            Elem_T* _sec_buffer = new Elem_T[_capacity / 2];
+            _copy(_buffer, _size - 1, _sec_buffer);
+            delete[] _buffer;
+            _buffer = _sec_buffer;
             _capacity /= 2;
         }
         --_size;
@@ -53,13 +53,13 @@ public:
     /*Returns the last element.*/
     inline Elem_T& back() {
         if (empty()) throw std::runtime_error{"DynamicTable::back called on empty table."};
-        return buffer[_size - 1];
+        return _buffer[_size - 1];
     }
 
     /*Returns the first element.*/
     inline Elem_T& front() {
         if (empty()) throw std::runtime_error{"DynamicTable::front called on empty table."};
-        return buffer[0];
+        return _buffer[0];
     }
 
     /*Returns the current number of elements in the table.*/
@@ -74,22 +74,22 @@ public:
 
     /*Returns the id_th element of the table. No bound checking is performed.*/
     Elem_T& operator[](size_t id) {
-        return buffer[id];
+        return _buffer[id];
     }
 
     /*Returns the id_th element of the table with bound checking.*/
     Elem_T& at(size_t id) {
         if (id < 0 or id >= _size) throw std::runtime_error{"Dynamic::at called with an out-of-bound index."};
-        return buffer[id];
+        return _buffer[id];
     }
 private:
-    inline static void copy(Elem_T* from_buffer, size_t from_capacity, Elem_T* to_buffer) {
+    inline static void _copy(Elem_T* from_buffer, size_t from_capacity, Elem_T* to_buffer) {
         for (size_t i = 0; i < from_capacity; ++i)
             to_buffer[i] = from_buffer[i];
     }
     size_t _capacity = 1;                       //The maximum number of elements the buffer can hold before having to be reallocated.
     size_t _size = 0;                           //The current number of elements in the buffer.
-    Elem_T* buffer = new Elem_T[_capacity];
+    Elem_T* _buffer = new Elem_T[_capacity];
 };
 
 #endif
