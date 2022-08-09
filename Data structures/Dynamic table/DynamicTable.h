@@ -71,6 +71,17 @@ public:
     inline const size_t& capacity() const {
         return _capacity;
     }
+
+    /*Returns the id_th element of the table. No bound checking is performed.*/
+    Elem_T& operator[](size_t id) {
+        return buffer[id];
+    }
+
+    /*Returns the id_th element of the table with bound checking.*/
+    Elem_T& at(size_t id) {
+        if (id < 0 or id >= _size) throw std::runtime_error{"Dynamic::at called with an out-of-bound index."};
+        return buffer[id];
+    }
 private:
     inline static void copy(Elem_T* from_buffer, size_t from_capacity, Elem_T* to_buffer) {
         for (size_t i = 0; i < from_capacity; ++i)
