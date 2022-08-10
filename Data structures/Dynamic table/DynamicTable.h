@@ -3,14 +3,15 @@
 
 #include <exception>
 #include <type_traits>
+#include "Copyer.h"
 
 /*This DynamicTable grows by double when its size exceeds its capacity
   and shrinks by half when its size is no greater than a quarter of its capacity.
   Uses are restricted to elements of TriviallyCopyableType.*/
-template <typename Elem_T, 
+template <typename Elem_T,
+          typename Copyer_T = StandardResourceTrivialCopyer<Elem_T>,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value, void>>
 class DynamicTable {
-    typedef std::size_t size_t;
 public:
     DynamicTable() = default;
     ~DynamicTable() {
@@ -23,7 +24,7 @@ public:
     void push_back(const Elem_T& e) {
         if (_size == _capacity) {
             Elem_T* _sec_buffer = new Elem_T[_capacity * 2];
-            _copy(_buffer, _size, _sec_buffer);
+            copy(_buffer, _size, _sec_buffer);
             delete[] _buffer;
             _buffer = _sec_buffer;
             _capacity *= 2;
@@ -38,7 +39,7 @@ public:
         const Elem_T popped_value = back();
         if (_capacity > 1 && _size - 1 <= _capacity / 4) {
             Elem_T* _sec_buffer = new Elem_T[_capacity / 2];
-            _copy(_buffer, _size - 1, _sec_buffer);
+            copy(_buffer, _size - 1, _sec_buffer);
             delete[] _buffer;
             _buffer = _sec_buffer;
             _capacity /= 2;
@@ -86,13 +87,9 @@ public:
         return _buffer[id];
     }
 private:
-    /*Copies content of `from_buffer` to `to_buffer`. Should only be called on arrays of TriviallyCopyableType.*/
-    static void _copy(Elem_T* from_buffer, size_t from_size, Elem_T* to_buffer) {
-        memcpy(to_buffer, from_buffer, sizeof(Elem_T) * from_size);
-    }   
-
-    size_t _capacity = 1;                       //The maximum number of elements the buffer can hold before having to be reallocated.
-    size_t _size = 0;                           //The current number of elements in the buffer.
+    static inline const Copyer_T copy{};
+    std::size_t _capacity = 1;                       //The maximum number of elements the buffer can hold before having to be reallocated.
+    std::size_t _size = 0;                           //The current number of elements in the buffer.
     Elem_T* _buffer = new Elem_T[_capacity];
 };
 
