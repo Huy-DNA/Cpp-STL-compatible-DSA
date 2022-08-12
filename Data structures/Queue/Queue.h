@@ -35,8 +35,8 @@ public:
         
         Elem_T res = _buffer[_head];
         _head = _inc_wrap(_head, 1);
+
         --_size;
-        
         if (_capacity >= 1 && _size <= _capacity / 4) {
             Elem_T* sec_buffer = new Elem_T[_capacity / 2];
             _copy_to_sec_buffer(sec_buffer);
@@ -68,10 +68,8 @@ public:
     }
 private:
     void _copy_to_sec_buffer(Elem_T* sec_buffer) const {
-        const size_t _tail = _get_tail();
-        for (size_t i = _head, sec_i = 0; ; ++sec_i, i = _inc_wrap(i, 1)) {
-            sec_buffer[sec_i] = _buffer[i];
-            if (i == _tail) return;
+        for (size_t i = 0; i < _size; ++i) {
+            sec_buffer[i] = _buffer[_inc_wrap(_head, i)];
         }
     }
 
