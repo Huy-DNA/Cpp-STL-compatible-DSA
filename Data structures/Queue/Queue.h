@@ -35,8 +35,9 @@ public:
         
         Elem_T res = _buffer[_head];
         _head = _inc_wrap(_head, 1);
-
-        if (_capacity >= 1 && _size - 1 <= _capacity / 4) {
+        --_size;
+        
+        if (_capacity >= 1 && _size <= _capacity / 4) {
             Elem_T* sec_buffer = new Elem_T[_capacity / 2];
             _copy_to_sec_buffer(sec_buffer);
             delete[] _buffer;
@@ -45,7 +46,6 @@ public:
             _head = 0;
             _capacity /= 2;
         }
-        --_size;
 
         return res;
     }
