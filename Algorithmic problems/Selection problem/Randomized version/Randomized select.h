@@ -34,7 +34,7 @@ auto select(Iter begin, Iter end, unsigned long long k, Comp less = std::less<co
         }
 
         if (less_right_id > k - 1)
-            end = begin + less_right_id;
+            end = begin + less_right_id;        //Note that `end` is always off by 1 compared to the last elements!!
         else if (greater_left_id < k - 1) {
             begin += greater_left_id + 1;
             k -= greater_left_id + 1;
