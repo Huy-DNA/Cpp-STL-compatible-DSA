@@ -85,6 +85,14 @@ public:
         if (id < 0 or id >= _size) throw std::runtime_error{"Dynamic::at called with an out-of-bound index."};
         return _buffer[id];
     }
+
+    Elem_T* begin() {
+        return _buffer + 0;
+    }
+
+    Elem_T* end() {
+        return _buffer + _size;
+    }
 private:
     /*Copies content of `from_buffer` to `to_buffer`. Should only be called on arrays of TriviallyCopyableType.*/
     static void _copy(Elem_T* from_buffer, size_t from_size, Elem_T* to_buffer) {
