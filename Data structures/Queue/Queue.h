@@ -18,11 +18,11 @@ public:
 
     void enqueue(const Elem_T& e) {
         if (_full()) {
-            Elem_T* _sec_buffer = new Elem_T[_capacity * 2];
-            _copy_to_sec_buffer(_sec_buffer);
+            Elem_T* sec_buffer = new Elem_T[_capacity * 2];
+            _copy_to_sec_buffer(sec_buffer);
             delete[] _buffer;
 
-            _buffer = _sec_buffer;
+            _buffer = sec_buffer;
             _head = 0;
             _capacity *= 2;
         }
@@ -37,11 +37,11 @@ public:
         _head = _inc_wrap(_head, 1);
 
         if (_capacity >= 1 && _size - 1 <= _capacity / 4) {
-            Elem_T* _sec_buffer = new Elem_T[_capacity / 2];
-            _copy_to_sec_buffer(_sec_buffer);
+            Elem_T* sec_buffer = new Elem_T[_capacity / 2];
+            _copy_to_sec_buffer(sec_buffer);
             delete[] _buffer;
 
-            _buffer = _sec_buffer;
+            _buffer = sec_buffer;
             _head = 0;
             _capacity /= 2;
         }
