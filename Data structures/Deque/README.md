@@ -17,4 +17,4 @@ Notes about this implementation of Deque (`Deque`) - I previously mistaken it wi
     * Only works with elements of `TriviallyCopyableType`.
 
 Things I want to improve:
-* The object's internal state is mutated a lot by its private methods. I don't think this would scale well.
+* The object's internal state is mutated a lot by its private methods. I don't think this is good practice.
