@@ -13,7 +13,7 @@ template <typename Elem_T,
 class NonConstBiIter;
 
 /*Elem_T must be of TriviallyCopyableType.
-  LinkedList::end() won't work as expected, that is, it doesn't point to off-by-one-from-the-end element. Therefore, --LinkedList::end() != <last-element>. In fact, it causes Segmentation fault. */
+  LinkedList::end() won't work as expected, that is, it doesn't point to off-by-one-from-the-end element. Therefore, LinkedList::end() != <last-element>. In fact, it causes Segmentation fault. */
 template <typename Elem_T,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value,
                                       void>>
