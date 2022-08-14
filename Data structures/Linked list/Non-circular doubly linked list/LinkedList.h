@@ -12,8 +12,7 @@ template <typename Elem_T,
                                       void>>
 class NonConstBiIter;
 
-/*Elem_T must be of TriviallyCopyableType.
-  LinkedList::end() won't work as expected, that is, it doesn't point to off-by-one-from-the-end element. Therefore, --LinkedList::end() != <last-element>. In fact, it causes Segmentation fault. */
+/*Elem_T must be of TriviallyCopyableType.*/
 template <typename Elem_T,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value,
                                       void>>
@@ -28,7 +27,7 @@ class LinkedList {
 
    public:
     ~LinkedList() {
-        while (_head != nullptr) {
+        while (_head != _NIL) {
             Node* cur = _head->next;
             delete _head;
             _head = cur;
@@ -38,7 +37,7 @@ class LinkedList {
     /*Returns a pointer to the first element whose value equals e.*/
     NonConstBiIter<Elem_T> search(const Elem_T& e) {
         Node* cur = _head;
-        while (cur != nullptr && cur->data != e)
+        while (cur != _NIL && cur->data != e)
             cur = cur->next;
         return {cur};
     }
@@ -46,10 +45,10 @@ class LinkedList {
     /*Pushes an element at the end of the list.*/
     void push_back(const Elem_T& e) {
         ++_size;
-        if (_head == nullptr)
-            _head = _tail = new Node {e, nullptr, nullptr};
+        if (_head == _NIL)
+            _head = _tail = new Node {e, _NIL, _NIL};
         else {
-            _tail->next = new Node {e, nullptr, _tail};
+            _tail->next = new Node {e, _NIL, _tail};
             _tail = _tail->next;
         }
     }
@@ -57,10 +56,10 @@ class LinkedList {
     /*Pushes an element at the start of the list.*/
     void push_front(const Elem_T& e) {
         ++_size;
-        if (_head == nullptr)
-            _head = _tail = new Node {e, nullptr, nullptr};
+        if (_head == _NIL)
+            _head = _tail = new Node {e, _NIL, _NIL};
         else {
-            Node* tmp = new Node {e, _head, nullptr};
+            Node* tmp = new Node {e, _head, _NIL};
             _head->prev = tmp;
             _head = tmp;
         }
@@ -75,8 +74,8 @@ class LinkedList {
         Node* tmp = _head;
 
         _head = _head->next;
-        if (_head == nullptr) _tail = nullptr;
-        else _head->prev = nullptr;
+        if (_head == _NIL) _tail = _NIL;
+        else _head->prev = _NIL;
 
         delete tmp;
         return res;
@@ -91,8 +90,8 @@ class LinkedList {
         Node* tmp = _tail;
 
         _tail = _tail->prev;
-        if (_tail == nullptr) _head = nullptr;
-        else _tail->next = nullptr;
+        if (_tail == _NIL) _head = _NIL;
+        else _tail->next = _NIL;
 
         delete tmp;
         return res;
@@ -106,7 +105,7 @@ class LinkedList {
     /*Returns nullptr.
     Not to the element past one from the last element.*/
     NonConstBiIter<Elem_T> end() {
-        return {nullptr};
+        return {_NIL};
     }
 
     /*Returns a reference to the last element.*/
@@ -129,8 +128,14 @@ class LinkedList {
         return _size;
     }
 private:
-    Node* _head = nullptr;
-    Node* _tail = nullptr;
+    //Technically, this is a circular linked list -- sentinel is the element that closes the circle.
+    Node _sentinel = {{}, &_sentinel, &_sentinel};     //sentinel->next == _head()
+                                                    //sentinel->prev == _prev()
+    
+    Node*& _tail = _sentinel.prev;
+    Node*& _head = _sentinel.next;
+
+    Node* _NIL = &_sentinel;                            
     size_t _size = 0;
 };
 

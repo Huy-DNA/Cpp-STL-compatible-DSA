@@ -12,11 +12,11 @@ Notes about this implementation of Linked List (`LinkedList`):
         * Worst-case running time: $\Theta(1)$
 * Other technical:
     * Range-based for loop is supported.
-    * `LinkedList::end()` doesn't point to the past-one from the end element. It points to `nullptr`.
+    * (*Fixed - 15/08/2022 1:13 AM*) `LinkedList::end()` doesn't point to the past-one from the end element. It points to `nullptr`.
     * Only works with elements of `TriviallyCopyableType`.
 
 Things I want to improve:
-* Maybe using a sentinel to properly implement `LinkedList::end()`?
+* (*Fixed - 15/08/2022 1:13 AM*) Maybe using a sentinel to properly implement `LinkedList::end()`?
 * Seriously, I don't even know if all of those templates would work correctly.
 
 Things I've learnt anyways (or I've already known but it's good to reiterate):
