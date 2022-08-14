@@ -167,9 +167,9 @@ private:
 /*Defines LinkedList::NonConstBiIter as bidirectional iterator.*/
 template <typename Elem_T>
 struct std::iterator_traits<NonConstBiIter<Elem_T>> {
-    typedef std::remove_cv_t<Elem_T> value_type;
-    typedef Elem_T* pointer;
-    typedef Elem_T& reference;
-    typedef std::bidirectional_iterator_tag iterator_category;
+    typedef std::remove_cv_t<Elem_T> value_type;                //cppreference does not specify what this does so...
+    typedef Elem_T* pointer;                                    //cppreference does not specify what this does so...
+    typedef Elem_T& reference;                                  //cppreference does not specify what this does so...
+    typedef std::bidirectional_iterator_tag iterator_category;  //I know what this does!!!
 };
 #endif
