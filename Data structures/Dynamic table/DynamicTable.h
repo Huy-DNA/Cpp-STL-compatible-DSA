@@ -1,7 +1,7 @@
 #ifndef __DYNAMIC_TABLE_HELL__
 #define __DYNAMIC_TABLE_HELL__
 
-#include <exception>
+#include <stdexcept>
 #include <type_traits>
 
 /*This DynamicTable grows by double when its size exceeds its capacity

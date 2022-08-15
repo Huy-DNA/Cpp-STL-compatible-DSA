@@ -1,8 +1,8 @@
-#ifndef __NONCIRCULAR_DOUBLY_LINKED_LIST__
-#define __NONCIRCULAR_DOUBLY_LINKED_LIST__
+#ifndef __NONCIRCULAR_DOUBLY_LINKED_LIST_HELL__
+#define __NONCIRCULAR_DOUBLY_LINKED_LIST_HELL__
 
 #include <type_traits>
-#include <exception>
+#include <stdexcept>
 #include <iterator>
 
 /*Iterator class representing pointers to list elements.*/

@@ -2,7 +2,7 @@
 #define __QUEUE_HELL__
 
 #include <type_traits>
-#include <exception>
+#include <stdexcept>
 
 template <typename Elem_T,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value,
