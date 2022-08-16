@@ -207,8 +207,10 @@ class CompactListNonConstBiIter {
     constexpr static long long _NIL = -1;
     constexpr static long long _INVALID = -2;
 public:
+    CompactListNonConstBiIter(const CompactListNonConstBiIter& other): _id{other._id}, _list_buffer{other._list_buffer}, _list_sentinel{other._list_sentinel} {}
+
     bool operator==(CompactListNonConstBiIter other) const {
-        return (other.id == id) && (other._list_buffer == _list_buffer) && (&other._list_sentinel == &_list_sentinel); 
+        return (other._id == _id) && (other._list_buffer == _list_buffer) && (&other._list_sentinel == &_list_sentinel); 
     }
 
     bool operator!=(CompactListNonConstBiIter other) const {
@@ -216,41 +218,41 @@ public:
     }
 
     Elem_T& operator*() {
-        switch (id) {
+        switch (_id) {
             case _INVALID: throw std::runtime_error{"Invalid iterator."};
             case _NIL: throw std::runtime_error{"Dereferencing sentinel."};
-            default: return _list_buffer[id].data;
+            default: return _list_buffer[_id].data;
         }
     }
 
     Elem_T* operator->() {
-        switch (id) {
+        switch (_id) {
             case _INVALID: throw std::runtime_error{"Invalid iterator."};
             case _NIL: throw std::runtime_error{"Dereferencing sentinel."};
-            default: return &_list_buffer[id].data;
+            default: return &_list_buffer[_id].data;
         }
     }
 
     CompactListNonConstBiIter& operator++() {
-        switch (id) {
+        switch (_id) {
             case _INVALID: throw std::runtime_error{"Invalid iterator."};
-            case _NIL: id = _list_sentinel.next; break;
-            default: id = _list_buffer[id].next;
+            case _NIL: _id = _list_sentinel.next; break;
+            default: _id = _list_buffer[_id].next;
         }
         return *this;
     }
 
     CompactListNonConstBiIter& operator--() {
-        switch (id) {
+        switch (_id) {
             case _INVALID: throw std::runtime_error{"Invalid iterator."};
-            case _NIL: id = _list_sentinel.prev; break;
-            default: id = _list_buffer[id].prev;
+            case _NIL: _id = _list_sentinel.prev; break;
+            default: _id = _list_buffer[_id].prev;
         }
         return *this;
     }
 private:
-    CompactListNonConstBiIter(long long i, Node* buffer, Node& sentinel): id{i}, _list_buffer{buffer}, _list_sentinel{sentinel} {}
-    long long id;
+    CompactListNonConstBiIter(long long i, Node* buffer, Node& sentinel): _id{i}, _list_buffer{buffer}, _list_sentinel{sentinel} {}
+    long long _id;
     Node* _list_buffer;
     Node& _list_sentinel;
 };

@@ -177,29 +177,29 @@ class LinkedListNonConstBiIter {
     friend class LinkedList<Elem_T>;
 public:
     bool operator==(LinkedListNonConstBiIter other) const {
-        return other.node == node;
+        return other._node == _node;
     }
     bool operator!=(LinkedListNonConstBiIter other) const {
-        return other.node != node;
+        return other._node != _node;
     }
     LinkedListNonConstBiIter& operator++() {
-        node = node->next;
+        _node = _node->next;
         return *this;
     }
     LinkedListNonConstBiIter& operator--() {
-        node = node->prev;
+        _node = _node->prev;
         return *this;
     }
     Elem_T& operator*() {
-        return node->data;
+        return _node->data;
     }
     Elem_T* operator->() {
-        return &(node->data);
+        return &(_node->data);
     }
 private:
-    LinkedListNonConstBiIter(typename LinkedList<Elem_T>::Node* n): node{n} {}
+    LinkedListNonConstBiIter(typename LinkedList<Elem_T>::Node* n): _node{n} {}
     /*Beware: node can be nullptr*/
-    typename LinkedList<Elem_T>::Node* node;
+    typename LinkedList<Elem_T>::Node* _node;
 };
 
 /*Defines LinkedList::LinkedListNonConstBiIter as bidirectional iterator.*/
