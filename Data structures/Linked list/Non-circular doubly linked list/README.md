@@ -4,10 +4,10 @@ Notes about this implementation of Linked List (`LinkedList`):
     * **SEARCH**: `LinkedList::search(`element`)`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(n)$
-    * **INSERT**: `LinkedList::push_back(`element`)`, `LinkedList::push_front(`element`)`
+    * **INSERT**: `LinkedList::push_back(`element`)`, `LinkedList::push_front(`element`)`, `LinkedList::insert_after(`iterator, element`)`, `LinkedList::insert_before(`iterator, element`)` 
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
-    * **DELETE**: `LinkedList::pop_back()`, `LinkedList::pop_front()`
+    * **DELETE**: `LinkedList::pop_back()`, `LinkedList::pop_front()`, `LinkedList::remove(`iterator`)`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
 * Other technical:
