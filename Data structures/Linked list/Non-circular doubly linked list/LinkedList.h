@@ -10,14 +10,14 @@
 template <typename Elem_T,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value,
                                       void>>
-class NonConstBiIter;
+class LinkedListNonConstBiIter;
 
 /*Elem_T must be of TriviallyCopyableType.*/
 template <typename Elem_T,
           typename = std::enable_if_t<std::is_trivially_copyable<Elem_T>::value,
                                       void>>
 class LinkedList {
-    friend class NonConstBiIter<Elem_T>;
+    friend class LinkedListNonConstBiIter<Elem_T>;
     typedef std::size_t size_t;
     struct Node {
         Elem_T data;
@@ -35,7 +35,7 @@ class LinkedList {
     }
 
     /*Returns a pointer to the first element whose value equals e.*/
-    NonConstBiIter<Elem_T> search(const Elem_T& e) {
+    LinkedListNonConstBiIter<Elem_T> search(const Elem_T& e) {
         Node* cur = _head;
         while (cur != _NIL && cur->data != e)
             cur = cur->next;
@@ -66,7 +66,7 @@ class LinkedList {
     }
 
     /*Inserts an element after a position.*/
-    void insert_after(NonConstBiIter<Elem_T> pos, const Elem_T& e) {
+    void insert_after(LinkedListNonConstBiIter<Elem_T> pos, const Elem_T& e) {
         if (pos.node == _NIL) throw std::runtime_error{"LinkedList::insert_after() called on invalid position."};
         //Note that if pos.node == _tail, because _tail is a reference to pos.node->next->prev, there's no need to manually set it.
         ++_size;
@@ -76,7 +76,7 @@ class LinkedList {
     }
 
     /*Inserts an element before a position.*/
-    void insert_before(NonConstBiIter<Elem_T> pos, const Elem_T& e) {
+    void insert_before(LinkedListNonConstBiIter<Elem_T> pos, const Elem_T& e) {
         if (pos.node == _NIL) throw std::runtime_error{"LinkedList::insert_before() called on invalid position."};
         //Note that if pos.node == _head, because _head is a reference to pos.node->prev->next, there's no need to manually set it.
         ++_size;
@@ -86,7 +86,7 @@ class LinkedList {
     }
 
     /*Removes an element at a position.*/
-    void remove(NonConstBiIter<Elem_T> pos) {
+    void remove(LinkedListNonConstBiIter<Elem_T> pos) {
         if (pos.node == _NIL) throw std::runtime_error{"LinkedList::remove() called on invalid position."};
         //Note that if pos.node == _tail, because _tail is a reference to pos.node->next->prev, there's no need to manually set it.
         //Note that if pos.node == _head, because _head is a reference to pos.node->prev->next, there's no need to manually set it.
@@ -129,13 +129,13 @@ class LinkedList {
     }
 
     /*Returns a pointer to the first element.*/
-    NonConstBiIter<Elem_T> begin() {
+    LinkedListNonConstBiIter<Elem_T> begin() {
         return {_head};
     }
 
     /*Returns nullptr.
     Not to the element past one from the last element.*/
-    NonConstBiIter<Elem_T> end() {
+    LinkedListNonConstBiIter<Elem_T> end() {
         return {_NIL};
     }
 
@@ -172,21 +172,20 @@ private:
 
 template <typename Elem_T,
           typename>
-class NonConstBiIter {
+class LinkedListNonConstBiIter {
     friend class LinkedList<Elem_T>;
 public:
-    NonConstBiIter(typename LinkedList<Elem_T>::Node* n): node{n} {}
-    bool operator==(NonConstBiIter other) const {
+    bool operator==(LinkedListNonConstBiIter other) const {
         return other.node == node;
     }
-    bool operator!=(NonConstBiIter other) const {
+    bool operator!=(LinkedListNonConstBiIter other) const {
         return other.node != node;
     }
-    NonConstBiIter& operator++() {
+    LinkedListNonConstBiIter& operator++() {
         node = node->next;
         return *this;
     }
-    NonConstBiIter& operator--() {
+    LinkedListNonConstBiIter& operator--() {
         node = node->prev;
         return *this;
     }
@@ -197,13 +196,14 @@ public:
         return &(node->data);
     }
 private:
+    LinkedListNonConstBiIter(typename LinkedList<Elem_T>::Node* n): node{n} {}
     /*Beware: node can be nullptr*/
     typename LinkedList<Elem_T>::Node* node;
 };
 
-/*Defines LinkedList::NonConstBiIter as bidirectional iterator.*/
+/*Defines LinkedList::LinkedListNonConstBiIter as bidirectional iterator.*/
 template <typename Elem_T>
-struct std::iterator_traits<NonConstBiIter<Elem_T>> {
+struct std::iterator_traits<LinkedListNonConstBiIter<Elem_T>> {
     typedef std::remove_cv_t<Elem_T> value_type;                //cppreference does not specify what this does so...
     typedef Elem_T* pointer;                                    //cppreference does not specify what this does so...
     typedef Elem_T& reference;                                  //cppreference does not specify what this does so...
