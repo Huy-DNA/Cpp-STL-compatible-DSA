@@ -34,11 +34,12 @@ class LinkedList {
         }
     }
 
-    /*Returns a pointer to the first element whose value equals e.*/
+    /*Returns an iterator to the first element whose value equals e.*/
     LinkedListNonConstBiIter<Elem_T> search(const Elem_T& e) {
         Node* cur = _head;
         while (cur != _NIL && cur->data != e)
             cur = cur->next;
+        if (cur == _NIL) cur = nullptr;         //truly indicates that no element was found.
         return {cur};
     }
     
@@ -133,8 +134,7 @@ class LinkedList {
         return {_head};
     }
 
-    /*Returns nullptr.
-    Not to the element past one from the last element.*/
+    /*Returns an iterator to the sentinel, which is past-one from the end.*/
     LinkedListNonConstBiIter<Elem_T> end() {
         return {_NIL};
     }

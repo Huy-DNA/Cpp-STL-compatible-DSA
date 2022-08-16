@@ -1,23 +1,24 @@
 # Linked List
 Notes about this implementation of Linked List (`LinkedList`):
 * Supported operations and their computational complexity: With $n$ being the number of elements,
-    * **SEARCH**: `LinkedList::search(`element`)`
+    * **SEARCH**: `LinkedList::search(element)`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(n)$
-    * **INSERT**: `LinkedList::push_back(`element`)`, `LinkedList::push_front(`element`)`, `LinkedList::insert_after(`iterator, element`)`, `LinkedList::insert_before(`iterator, element`)` 
+    * **INSERT**: `LinkedList::push_back(element)`, `LinkedList::push_front(element)`, `LinkedList::insert_after(iterator, element)`, `LinkedList::insert_before(iterator, element)` 
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
-    * **DELETE**: `LinkedList::pop_back()`, `LinkedList::pop_front()`, `LinkedList::remove(`iterator`)`
+    * **DELETE**: `LinkedList::pop_back()`, `LinkedList::pop_front()`, `LinkedList::remove(iterator)`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
 * Other technical:
+    * This is technically a circular linked list with the sentinel closing the circle.
     * Range-based for loop is supported.
-    * (*Fixed - 15/08/2022 1:13 AM*) `LinkedList::end()` doesn't point to the past-one from the end element. It points to `nullptr`.
     * Only works with elements of `TriviallyCopyableType`.
 
 Things I want to improve:
-* (*Fixed - 15/08/2022 1:13 AM*) Maybe using a sentinel to properly implement `LinkedList::end()`?
+* (*Done - 15/08/2022 1:13 AM*) Maybe using a sentinel to properly implement `LinkedList::end()`?
 * Seriously, I don't even know if all of those templates would work correctly.
+* Implements Merge sort for Linked list.
 
 Things I've learnt anyways (or I've already known but it's good to reiterate):
 * `typename` should precede subtypes of templated class. By default, the compiler treats `A<T>::B` as a member variable (do I remember correctly??) if `T` is a dependent typename.

@@ -1,7 +1,7 @@
 # Dynamic Table
 Notes about this implementation of Dynamic Table (`DynamicTable`):
 * Supported operations and their computational complexity:
-    * **INSERT**: `DynamicTable::push_back(`element`)`
+    * **INSERT**: `DynamicTable::push_back(element)`
         * Worst-case auxiliary space: $\Theta(n)$ (when doubling capacity)
         * Amortized running time: $\Theta(1)$
     * **DELETE**: `DynamicTable::pop_back()`

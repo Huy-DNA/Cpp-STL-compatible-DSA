@@ -1,7 +1,7 @@
 # Queue 
 Notes about this implementation of Queue (`Queue`):
 * Supported operations and their computational complexity:
-    * **INSERT**: `Queue::enqueue(`element`)`
+    * **INSERT**: `Queue::enqueue(element)`
         * Worst-case auxiliary space: $\Theta(n)$ (when doubling capacity)
         * Amortized running time: $\Theta(1)$
     * **DELETE**: `Queue::dequeue()`

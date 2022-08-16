@@ -1,7 +1,7 @@
 # Stack
 Notes about this implementation of Stack (`Stack`):
 * Supported operations and their computational complexity:
-    * **INSERT**: `Stack::push(`element`)`
+    * **INSERT**: `Stack::push(element)`
         * Worst-case auxiliary space: $\Theta(n)$
         * Amortized running time: $\Theta(1)$
     * **DELETE**: `Stack::pop()`
