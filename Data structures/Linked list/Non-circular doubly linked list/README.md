@@ -18,7 +18,7 @@ Notes about this implementation of Linked List (`LinkedList`):
 Things I want to improve:
 * (*Done - 15/08/2022 1:13 AM*) Maybe using a sentinel to properly implement `LinkedList::end()`?
 * Seriously, I don't even know if all of those templates would work correctly.
-* Implements Merge sort for Linked list.
+* (*Done - 16/08/2022 11:25 PM*) Implements Merge sort for Linked list.
 
 Things I've learnt anyways (or I've already known but it's good to reiterate):
 * `typename` should precede subtypes of templated class. By default, the compiler treats `A<T>::B` as a member variable (do I remember correctly??) if `T` is a dependent typename.

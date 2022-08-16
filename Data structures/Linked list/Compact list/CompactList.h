@@ -11,7 +11,6 @@ template <typename Elem_T,
                                       void>>
 class CompactListNonConstBiIter;
 
-
 /*Pointer-less Linked List implemented using a dynamic array -- array indices act as pointers. 
   It's also Compact -- meaning all elements always occupy the leftmost slots of the array.
   Elem_T must be of TriviallyCopyableType.*/

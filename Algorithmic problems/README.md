@@ -1,0 +1,3 @@
+# Algorithmic problems
+Things I want to improve:
+* Change `std::remove_reference_t<decltype(*Iter())>` to `typename std::iterator_traits<Iter>::value_type`. Too many of them... maybe I'll consider writing a Bash script...
