@@ -170,6 +170,7 @@ private:
     size_t _size = 0;
 };
 
+/*------------------------------------*/
 template <typename Elem_T,
           typename>
 class LinkedListNonConstBiIter {

@@ -11,6 +11,7 @@ Notes about this implementation of Compact List (`CompactList`):
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
 * Other technical:
+    * Underlying array for holding the elements is dynamic. (HEY!! I've just figured out that I could have just included DynamicTable.h instead...)
     * Range-based for loop is supported.
     * Only works with elements of `TriviallyCopyableType`.
 

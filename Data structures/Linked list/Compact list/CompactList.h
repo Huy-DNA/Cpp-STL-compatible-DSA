@@ -156,6 +156,7 @@ private:
         return _buffer[id];
     }
 
+    /*Doubles the capacity of the underlying array.*/
     void _double_buffer() {
         Node* sec_buffer = new Node[_capacity * 2];
         _copy(_buffer, _size, sec_buffer);
@@ -164,6 +165,7 @@ private:
         _capacity *= 2;
     }
 
+    /*Halves the capacity of the underlying array.*/
     void _halve_buffer() {
         Node* sec_buffer = new Node[_capacity / 2];
         _copy(_buffer, _size, sec_buffer);
@@ -172,27 +174,31 @@ private:
         _capacity /= 2;
     }
 
+    /*Copies `from_size` elements from `from_buffer` to `to_buffer`.*/
     static void _copy(Node* from_buffer, size_t from_size, Node* to_buffer) {
         memcpy(to_buffer, from_buffer, from_size * sizeof(Node));
     }
 
+    /*Checks whether the underlying array have reached its capacity.*/
     bool _full() const {
         return _size == _capacity;
     }
 
+    /*Checks whether the current number of elements in the array is less than a quarter of its capacity.*/
     bool _can_halve() const {
         return _capacity > 1 && _size <= _capacity / 4;
     }
 
-    size_t _size = 0;
-    size_t _capacity = 1;
-    Node* _buffer = new Node[_capacity];
+    size_t _size = 0;                       //number of elements in the list
+    size_t _capacity = 1;                   //capacity of the underlying array
+    Node* _buffer = new Node[_capacity];    //underlying array for holding list's elements
 
-    Node _sentinel = {{}, -1, -1};      //_sentinel.next == _head, _sentinel.prev == _tail
-    long long& _head = _sentinel.next;
-    long long& _tail = _sentinel.prev;
+    Node _sentinel = {{}, -1, -1};          //_sentinel.next == _head, _sentinel.prev == _tail
+    long long& _head = _sentinel.next;      //index of the list's head in the array
+    long long& _tail = _sentinel.prev;      //index of the list's tail in the array
 };
 
+/*-------------------------------------*/
 template <typename Elem_T,
           typename>
 class CompactListNonConstBiIter {
