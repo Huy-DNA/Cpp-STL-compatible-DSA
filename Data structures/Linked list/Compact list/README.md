@@ -115,7 +115,7 @@ We can formulate this as a mathematical problem:
 
 Side note: The case where $m > k$ is equivalent to the case where the $k^{th}$ element in the linked list is the last element to be less than $e$, and $m = k$ means the $k^{th}$ element is the desired one. 
 
-Denote $i_t$ as the number you draw at at step $t$; $y_t = i_t$ if $i_t \le k$, otherwise $y_t = 0$.
+Denote $i_t$ as the number you draw at at step $t$, $y_t = \begin{cases} i_t, i_t \le k \\ 0, i_t > k\end{cases}$
 
 Essentially, the problem asks you to determine $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}]$. However, approximating $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}]$ is sufficient for the purpose of this whole proof.
 
@@ -125,8 +125,7 @@ With $s$ steps, for each $i$ in $[1..k]$,
 $P(\displaystyle\max_{1 \le t \le s}\{0, y_t\} = i) = \frac{1}{n^s}\begin{pmatrix}(n-k+i)^s - (n -k + i - 1)^s\end{pmatrix}$
 
 Therefore,  
-$E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}] = \displaystyle \frac{1}{n^s}\sum_{i=1}^k i\begin{pmatrix}(n-k+i)^s - (n-k+i-1)^s\end{pmatrix} = \frac{1}{n^s}\begin{pmatrix}kn^s-(n-1)^s - (n-2)^s - \cdots - (n-k)^s\end{pmatrix}$  
- $ = k - \begin{pmatrix}\displaystyle(1-\frac{1}{n})^s+(1-\frac{2}{n})^s+\cdots+(1-\frac{k}{n})^s\end{pmatrix}\ge k - \displaystyle f(\frac{1}{n})-f(\frac{2}{n})-\cdots-f(\frac{k}{n})$.
+$E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}] = \displaystyle \frac{1}{n^s}\sum_{i=1}^k i\begin{pmatrix}(n-k+i)^s - (n-k+i-1)^s\end{pmatrix} = \frac{1}{n^s}\begin{pmatrix}kn^s-(n-1)^s - (n-2)^s - \cdots - (n-k)^s\end{pmatrix} = k - \begin{pmatrix}\displaystyle(1-\frac{1}{n})^s+(1-\frac{2}{n})^s+\cdots+(1-\frac{k}{n})^s\end{pmatrix}\ge k - \displaystyle f(\frac{1}{n})-f(\frac{2}{n})-\cdots-f(\frac{k}{n})$.
 
 Here, $f(x)=(1-x)^s$.
 
