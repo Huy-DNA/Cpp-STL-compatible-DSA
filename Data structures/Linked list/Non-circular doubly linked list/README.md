@@ -13,6 +13,7 @@ Notes about this implementation of Linked List (`LinkedList`):
 * Other technical:
     * This is technically a circular linked list with the sentinel closing the circle.
     * Range-based for loop is supported.
+    * The Merge sort algorithm implemented in `Merge sort.h` can be used to sort the list.
     * Only works with elements of `TriviallyCopyableType`.
 
 Things I want to improve:

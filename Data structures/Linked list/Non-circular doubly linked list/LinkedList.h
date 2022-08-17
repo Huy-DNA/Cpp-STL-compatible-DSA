@@ -68,33 +68,33 @@ class LinkedList {
 
     /*Inserts an element after a position.*/
     void insert_after(LinkedListNonConstBiIter<Elem_T> pos, const Elem_T& e) {
-        if (pos.node == _NIL) throw std::runtime_error{"LinkedList::insert_after() called on invalid position."};
+        if (pos._node == _NIL) throw std::runtime_error{"LinkedList::insert_after() called on invalid position."};
         //Note that if pos.node == _tail, because _tail is a reference to pos.node->next->prev, there's no need to manually set it.
         ++_size;
-        Node* e_node = new Node {e, pos.node->next, pos.node};
-        pos.node->next->prev = e_node;
-        pos.node->next = e_node;
+        Node* e_node = new Node {e, pos._node->next, pos._node};
+        pos._node->next->prev = e_node;
+        pos._node->next = e_node;
     }
 
     /*Inserts an element before a position.*/
     void insert_before(LinkedListNonConstBiIter<Elem_T> pos, const Elem_T& e) {
-        if (pos.node == _NIL) throw std::runtime_error{"LinkedList::insert_before() called on invalid position."};
+        if (pos._node == _NIL) throw std::runtime_error{"LinkedList::insert_before() called on invalid position."};
         //Note that if pos.node == _head, because _head is a reference to pos.node->prev->next, there's no need to manually set it.
         ++_size;
-        Node* e_node = new Node {e, pos.node, pos.node->prev};
-        pos.node->prev->next = e_node;
-        pos.node->prev = e_node;
+        Node* e_node = new Node {e, pos._node, pos._node->prev};
+        pos._node->prev->next = e_node;
+        pos._node->prev = e_node;
     }
 
     /*Removes an element at a position.*/
     void remove(LinkedListNonConstBiIter<Elem_T> pos) {
-        if (pos.node == _NIL) throw std::runtime_error{"LinkedList::remove() called on invalid position."};
+        if (pos._node == _NIL) throw std::runtime_error{"LinkedList::remove() called on invalid position."};
         //Note that if pos.node == _tail, because _tail is a reference to pos.node->next->prev, there's no need to manually set it.
         //Note that if pos.node == _head, because _head is a reference to pos.node->prev->next, there's no need to manually set it.
         --_size;
-        pos.node->prev->next = pos.node->next;
-        pos.node->next->prev = pos.node->prev;
-        delete pos.node;
+        pos._node->prev->next = pos._node->next;
+        pos._node->next->prev = pos._node->prev;
+        delete pos._node;
     }
 
     /*Removes and returns the element at the start of the list.*/

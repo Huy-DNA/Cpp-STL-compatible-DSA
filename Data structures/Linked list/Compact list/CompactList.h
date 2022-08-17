@@ -4,6 +4,8 @@
 #include <type_traits>
 #include <stdexcept>
 #include <iterator>
+#include <random>
+#include <functional>
 
 /*Class representing bidirectional non-const iterator to CompactList's element.*/
 template <typename Elem_T,
@@ -31,14 +33,32 @@ public:
     ~CompactList() {
         delete[] _buffer;
     }
+    
+    /*Returns an iterator to some element of the list that equals `e`.
+      Requires the list to be sorted first.
+      Remember to pass the same compare function `less` you passed to the sorting algorithm.*/
+    CompactListNonConstBiIter<Elem_T> sorted_search(const Elem_T& e, const std::function<bool(const Elem_T&, const Elem_T&)>& less = std::less<const Elem_T&>{}) {
+        static std::mt19937_64 mt;
+        std::uniform_int_distribution<size_t> gen {0, _size - 1};
+        long long cur = _head;
+        while (cur != _NIL && less(_buffer[cur].data, e)) {
+            long long random_pos = gen(mt);
+            if (_buffer[random_pos].data == e) return _create_iterator(random_pos);
+            if (less(_buffer[random_pos].data, e) && less(_buffer[cur].data, _buffer[random_pos].data))
+                cur = random_pos;
+            cur = _buffer[cur].next;
+        }
+        if (cur == _NIL || less(e, _buffer[cur].data)) cur = _INVALID;
+        return _create_iterator(cur);
+    }
 
-    /*Returns the first element of the list that equals `e`.*/
+    /*Returns an iterator to the first element of the list that equals `e`.*/
     CompactListNonConstBiIter<Elem_T> search(const Elem_T& e) {
         long long cur = _head;
         while (cur != _NIL && _buffer[cur].data != e)
             cur = _buffer[cur].next;
         if (cur == _NIL) cur = _INVALID;
-        return {cur, _buffer, _sentinel};
+        return _create_iterator(cur);
     }
 
     /*Inserts `e` after `iter`.*/
@@ -77,8 +97,8 @@ public:
 
     /*Removes the element pointed to by `iter` from the list.*/
     void remove(CompactListNonConstBiIter<Elem_T> iter) {
-        if (iter.id == _NIL or iter.id == _INVALID) throw std::runtime_error{"CompactList::remove() called on invalid position."};
-        _remove(iter.id);
+        if (iter._id == _NIL or iter._id == _INVALID) throw std::runtime_error{"CompactList::remove() called on invalid position."};
+        _remove(iter._id);
     }
 
     /*Returns whether the list is empty.*/
@@ -153,6 +173,10 @@ private:
     Node& _index_buffer_sentinel_aware(long long id) {
         if (id == -1) return _sentinel;
         return _buffer[id];
+    }
+
+    CompactListNonConstBiIter<Elem_T> _create_iterator(long long id) {
+        return {id, _buffer, _sentinel};
     }
 
     /*Doubles the capacity of the underlying array.*/
