@@ -115,28 +115,28 @@ We can formulate this as a mathematical problem:
 
 Side note: The case where $m > k$ is equivalent to the case where the $k^{th}$ element in the linked list is the last element to be less than $e$, and $m = k$ means the $k^{th}$ element is the desired one. 
 
-Denote $i_t$ as the number you draw at at step $t$; $i'_t$ with $i'_t = i_t$, when $i_t \le k$, otherwise, $i'_t = 0$.
+Denote $i_t$ as the number you draw at at step $t$, $y_t = \begin{cases} i_t, i_t \le k \\ 0, i_t > k\end{cases}$
 
-Essentially, the problem asks you to determine $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}]$. However, approximating $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}]$ is sufficient for the purpose of this whole proof.
+Essentially, the problem asks you to determine $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}]$. However, approximating $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}]$ is sufficient for the purpose of this whole proof.
 
-Notice that $\displaystyle \max_{1 \le t \le s}\{0, i'_t\}$ always lies within $[0, k]$.
+Notice that $\displaystyle \max_{1 \le t \le s}\{0, y_t\}$ always lies within $[0, k]$.
 
 With $s$ steps, for each $i$ in $[1..k]$,  
-$P(\displaystyle\max_{1 \le t \le s}\{0, i'_t\} = i) = \frac{1}{n^s}\begin{pmatrix}(n-k+i)^s - (n -k + i - 1)^s\end{pmatrix}$
+$P(\displaystyle\max_{1 \le t \le s}\{0, y_t\} = i) = \frac{1}{n^s}\begin{pmatrix}(n-k+i)^s - (n -k + i - 1)^s\end{pmatrix}$
 
 Therefore,  
-$E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}] = \displaystyle \frac{1}{n^s}\sum_{i=1}^k i\begin{pmatrix}(n-k+i)^s - (n-k+i-1)^s\end{pmatrix} = \frac{1}{n^s}\begin{pmatrix}kn^s-(n-1)^s - (n-2)^s - \cdots - (n-k)^s\end{pmatrix} = k - \begin{pmatrix}\displaystyle(1-\frac{1}{n})^s+(1-\frac{2}{n})^s+\cdots+(1-\frac{k}{n})^s\end{pmatrix}\ge k - \displaystyle f(\frac{1}{n})-f(\frac{2}{n})-\cdots-f(\frac{k}{n})$.
+$E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}] = \displaystyle \frac{1}{n^s}\sum_{i=1}^k i\begin{pmatrix}(n-k+i)^s - (n-k+i-1)^s\end{pmatrix} = \frac{1}{n^s}\begin{pmatrix}kn^s-(n-1)^s - (n-2)^s - \cdots - (n-k)^s\end{pmatrix} = k - \begin{pmatrix}\displaystyle(1-\frac{1}{n})^s+(1-\frac{2}{n})^s+\cdots+(1-\frac{k}{n})^s\end{pmatrix}\ge k - \displaystyle f(\frac{1}{n})-f(\frac{2}{n})-\cdots-f(\frac{k}{n})$.
 
 Here, $f(x)=(1-x)^s$.
 
 Because $f$ is a decreasing function in $[0, 1]$,  
 $\displaystyle \frac{1}{n} \sum_{i=1}^{k} f(\frac{i}{n}) \le \int_0^{\frac{k}{n}}f(x)dx=\frac{1-(1-\frac{k}{n})^{s+1}}{s+1}$.
 
-Hence, $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}] \ge k - n\cdot\frac{1-(1-\frac{k}{n})^{s+1}}{s+1}$.
+Hence, $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}] \ge k - n\cdot\frac{1-(1-\frac{k}{n})^{s+1}}{s+1}$.
 
-We can see the greater the value of $s$, the greater the lower bound of $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}]$
+We can see the greater the value of $s$, the greater the lower bound of $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}]$
 
-Consequently, for $s \ge \sqrt{n} - 1$, $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}] \ge k -\sqrt{n}\begin{pmatrix}1-(1-\frac{k}{n})^{\sqrt{n}}\end{pmatrix} \ge k - \sqrt{n}$.
+Consequently, for $s \ge \sqrt{n} - 1$, $E[\displaystyle \max_{1 \le t \le s}\{0, y_t\}] \ge k -\sqrt{n}\begin{pmatrix}1-(1-\frac{k}{n})^{\sqrt{n}}\end{pmatrix} \ge k - \sqrt{n}$.
 
 What this means is that if we repeat the above process of pick, check and jump about $\sqrt{n}$ times, we can expect to be at least at position $k-\sqrt{n}$. We can only appreciate this result if we look at this procedure:
 ```ada
