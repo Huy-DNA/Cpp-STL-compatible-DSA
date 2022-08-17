@@ -6,7 +6,7 @@
 
 Notes about this implementation of Deque (`Deque`) - I previously mistaken it with Dequeue LOL:
 * Supported operations and their computational complexity:
-    * **INSERT**: `Deque::push_front(`element`)`, `Deque::push_back(`element`)`
+    * **INSERT**: `Deque::push_front(element)`, `Deque::push_back(element)`
         * Worst-case auxiliary space: $\Theta(n)$ (when doubling capacity)
         * Amortized running time: $\Theta(1)$
     * **DELETE**: `Deque::pop_front()`, `Deque::pop_back()`
