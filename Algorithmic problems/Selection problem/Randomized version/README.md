@@ -1,7 +1,7 @@
 # Randomized select algorithm
 > The last part of this algorithm (where you modify begin and end) was kinda tricky to me. I hate these kinds of situation in general though --- off by one and BAM! you are dead.
 
-Notes about this implementation select algorithm:
+Notes about this implementation of select algorithm:
 * Time complexity:
     * Expected-case running time: $\Theta(n)$
     * Best-case running time: $\Theta(n)$
