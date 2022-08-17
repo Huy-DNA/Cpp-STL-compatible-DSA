@@ -1,6 +1,7 @@
 #ifndef __MERGE_SORT_HELL__
 #define __MERGE_SORT_HELL__
 
+#include <vector>
 #include <iterator>
 #include <type_traits>
 #include <functional>
