@@ -115,7 +115,7 @@ We can formulate this as a mathematical problem:
 
 Side note: The case where $m > k$ is equivalent to the case where the $k^{th}$ element in the linked list is the last element to be less than $e$, and $m = k$ means the $k^{th}$ element is the desired one. 
 
-Denote $i_t$ as the number you draw at at step $t$, $i'_t = \begin{cases} i_t, i_t \le k \\ 0, i_t > k\end{cases}$
+Denote $i_t$ as the number you draw at at step $t$; $i'_t$ with $i'_t = i_t$, when $i_t \le k$, otherwise, $i'_t = 0$.
 
 Essentially, the problem asks you to determine $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}]$. However, approximating $E[\displaystyle \max_{1 \le t \le s}\{0, i'_t\}]$ is sufficient for the purpose of this whole proof.
 
