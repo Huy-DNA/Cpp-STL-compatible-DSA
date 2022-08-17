@@ -55,11 +55,11 @@ CompactListNonConstBiIter<Elem_T> sorted_search(const Elem_T& e, const std::func
         return _create_iterator(cur);
     }
 ```
-Hard to understand right -- all these language's quirks and implementation details. Let's use pseudocode instead.
+Hard to understand, right??? -- all these language's quirks and implementation details. Let's use pseudocode instead.
 
 Think of the `CompactList` instance as an obj `l` having 4 interested fields: `size`, `val`, `next` and `head`.
 * The number of elements in the list is stored in `l.size`. 
-* We can access the Linked list's elements by indexing `l.val` like `l.val[i]`. Notice that `i` always lies in the range $[0,$ `l.size`$ - 1]$.
+* We can access the Linked list's elements by indexing `l.val` like `l.val[i]`. Notice that `i` always lies in the range $[0,$ `l.size` $ - 1]$.
 * `l.next[i]` is the index of the next element in the list, which means `l.val[l.next[i]]` is the element next to `l.val[i]`.
 * `l.head` is the index of the first element in the list.
 * The last element in the list will point to a sentinel value `NIL`.
@@ -84,13 +84,13 @@ SORTED-SEARCH(l, e):
 ```
 
 So basically, instead of just scanning sequentially all the list elements for the desired one, we take SHORTCUTS~~~
-* First randomly picking a random element in the list (we can do this because we know all elements lies in $[0,$ `l.size` $-1]$).
+* First randomly pick a random element in the list (we can do this because we know all elements lies in $[0,$ `l.size` $-1]$).
 * Then, determine whether it's safe to "jump" to this element. It should be safe if the element lies somewhere between the current elements and the desired element (if any) in the list. Because we know that the list is sorted, we can infer this information by comparing the picked element with the desired and current one. It it's safe, jump to it! If it's not safe, just ignore it.
 * Finally, we just advance to the next element, either from the just-jumped-to element or the current element (if we didn't do the jump).
 
 OK. Now we got the intuition -- we're ready to slay!
 ### Proof
-You may wonder, if I just randomly pick an element, determine whether it's safe to jump to it, then do the jump if it's really is -- all without manually advancing to the next element, how far can I expect me to get? That is with this function,
+You may wonder, if we just randomly pick an element, determine whether it's safe to jump to it, then do the jump if it's really is -- all without manually advancing to the next element, how far can we expect to get? That is with this function,
 ```ada
 ONLY-JUMP(l, e, steps):
     cur = l.head
