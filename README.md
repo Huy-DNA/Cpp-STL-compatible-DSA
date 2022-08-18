@@ -5,8 +5,9 @@ This is where I store my C++ implementations of data structures and solutions to
 * I'll try to provide as much information as possible in a README file for each implementation here. It's a way that I revise things and might turn out useful in the future!? &#129488;
 
 ## What I've learnt from this
-* When testing written C++ libraries, always include it first before any other standard library. This way, you can figure out what standard library you forget to include in your written libraries.
-* Consider adding constant version of any methods you're writing if it's possible. There are some cases in which it's necessary but hard to see why. Look at the README file of "Direct-addressing table - No Null Marking".
+* Always include self-written libraries first before any other standard libraries.
+* Consider adding constant version of any methods you're writing if it's possible. See my notes at [Direct-addressing table - No Null Marking](https://github.com/HuyDNA/DSA/tree/main/Data%20structures/Direct-addressing%20table).
+* My project organization and documentation skills are bad lol.
 
 ## Some works done
 * [Compact List and Fast probabilistic search on Linked List](https://github.com/HuyDNA/DSA/tree/main/Data%20structures/Linked%20list/Compact%20list)
