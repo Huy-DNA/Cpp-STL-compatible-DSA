@@ -11,3 +11,5 @@ class ...
 UIntInfer_T<10> n;      //uint_8
 UIntInfer_T<256> n;     //uint_16
 ```
+## Consideration
+* I recall reading something about `uint_8` being unsafe. Might need to reinvestigate that.
