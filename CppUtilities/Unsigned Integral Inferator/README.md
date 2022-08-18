@@ -1,5 +1,5 @@
 # Unsigned Integral Type Inferator
-Used to infer the smallest unsigned integral type that can hold the value of a specified unsigned integer.
+Used to deduce the smallest unsigned integral type that can hold the value of a specified unsigned integer.
 ## How to use
 ```C++
 #include "<path>/UIntInfer"
