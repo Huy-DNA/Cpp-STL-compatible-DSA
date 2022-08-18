@@ -9,8 +9,7 @@
   Value_T must be of TriviallyCopyableType,
   K_MAX must be nonnegative.*/
 template <typename Value_T, size_t K_MAX,
-          typename = std::enable_if_t<std::is_trivially_copyable<Value_T>::value, void>,
-          typename = std::enable_if_t<K_MAX >= 0, void>>
+          typename = std::enable_if_t<std::is_trivially_copyable<Value_T>::value, void>>
 class DirectAddressingTable {
     typedef std::size_t size_t;
 public:

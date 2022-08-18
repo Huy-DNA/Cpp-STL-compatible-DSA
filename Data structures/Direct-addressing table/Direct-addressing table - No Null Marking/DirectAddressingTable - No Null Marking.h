@@ -1,18 +1,18 @@
 #ifndef __DIRECT_ADDRESSING_TABLE_NO_NULL_MARKING_HELL__
 #define __DIRECT_ADDRESSING_TABLE_NO_NULL_MARKING_HELL__
 
+#include "../../../CppUtilities/UIntegralInferator/UIntInfer.h"
+#include "../../Dynamic table/DynamicTable.h"
 #include <type_traits>
 #include <stdexcept>
-#include "../../Dynamic table/DynamicTable.h"
 
 /*DirectAddressingTable<Value_T, K_MAX> can be thought of as mapping from a key in range [0, K_MAX] to a value of Value_T.
   Value_T must be of TriviallyCopyableType,
   K_MAX must be nonnegative,
   Id_T is the type assumed for table indices,
   Additionally, this implementation only requires constant initialization time at the cost of more memory usage.*/
-template <typename Value_T, std::size_t K_MAX, typename Id_T = std::size_t,
-          typename = std::enable_if_t<std::is_trivially_copyable<Value_T>::value, void>,
-          typename = std::enable_if_t<K_MAX >= 0, void>>
+template <typename Value_T, std::size_t K_MAX, typename Id_T = UIntInfer<K_MAX>,
+          typename = std::enable_if_t<std::is_trivially_copyable<Value_T>::value, void>>
 class DirectAddressingTable {
 public:
     Value_T& operator[](Id_T key) {
