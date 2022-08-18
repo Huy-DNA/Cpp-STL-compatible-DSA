@@ -2,6 +2,7 @@
 #define __STACK_HELL__
 
 #include "../Dynamic table/DynamicTable.h"
+#include <cstddef>
 
 /*Uses are restricted to elements of TriviallyCopyableType.*/
 template <typename Elem_T>

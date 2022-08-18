@@ -1,6 +1,7 @@
 #ifndef __DIRECT_ADDRESSING_TABLE__
 #define __DIRECT_ADDRESSING_TABLE__
 
+#include <cstddef>
 #include <type_traits>
 #include <stdexcept>
 #include <bitset>

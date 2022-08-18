@@ -1,6 +1,7 @@
 #ifndef __MEMORY_POOL_HELL__
 #define __MEMORY_POOL_HELL__
 
+#include <cstddef>
 #include <type_traits>
 #include <stdexcept>
 

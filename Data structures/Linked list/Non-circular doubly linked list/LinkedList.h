@@ -1,6 +1,7 @@
 #ifndef __NONCIRCULAR_DOUBLY_LINKED_LIST_HELL__
 #define __NONCIRCULAR_DOUBLY_LINKED_LIST_HELL__
 
+#include <cstddef>
 #include <type_traits>
 #include <stdexcept>
 #include <iterator>

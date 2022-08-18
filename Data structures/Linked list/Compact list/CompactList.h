@@ -1,6 +1,7 @@
 #ifndef __COMPACT_LIST_HELL__
 #define __COMPACT_LIST_HELL__
 
+#include <cstddef>
 #include <type_traits>
 #include <stdexcept>
 #include <iterator>

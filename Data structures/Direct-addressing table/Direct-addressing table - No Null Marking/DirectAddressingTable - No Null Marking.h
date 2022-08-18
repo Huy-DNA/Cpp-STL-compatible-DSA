@@ -3,6 +3,7 @@
 
 #include "../../../CppUtilities/Unsigned Integral Inferator/UIntInfer.h"
 #include "../../Dynamic table/DynamicTable.h"
+#include <cstddef>
 #include <type_traits>
 #include <stdexcept>
 

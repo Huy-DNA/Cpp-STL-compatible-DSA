@@ -2,6 +2,7 @@
 #define __QUEUE_HELL__
 
 #include <type_traits>
+#include <cstddef>
 #include <stdexcept>
 
 template <typename Elem_T,

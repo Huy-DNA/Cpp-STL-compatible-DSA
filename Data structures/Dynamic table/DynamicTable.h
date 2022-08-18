@@ -1,6 +1,7 @@
 #ifndef __DYNAMIC_TABLE_HELL__
 #define __DYNAMIC_TABLE_HELL__
 
+#include <cstddef>
 #include <stdexcept>
 #include <type_traits>
 
