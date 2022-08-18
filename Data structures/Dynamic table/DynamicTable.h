@@ -80,8 +80,17 @@ public:
         return _buffer[id];
     }
 
+    const Elem_T& operator[](size_t id) const {
+        return _buffer[id];
+    }
+
     /*Returns the id_th element of the table with bound checking.*/
     Elem_T& at(size_t id) {
+        if (id < 0 or id >= _size) throw std::runtime_error{"Dynamic::at called with an out-of-bound index."};
+        return _buffer[id];
+    }
+    
+    const Elem_T& at(size_t id) const {
         if (id < 0 or id >= _size) throw std::runtime_error{"Dynamic::at called with an out-of-bound index."};
         return _buffer[id];
     }
