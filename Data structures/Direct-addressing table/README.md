@@ -14,3 +14,6 @@ Notes about this implementation of Direct-addressing Table (`DirectAddressingTab
 * Other technical:
     * Keys must be non-negative integers and upper bounded by a specified number.
     * Only works with values of `TriviallyCopyableType`.
+
+Notes:
+* Direct Addressing Table should only be used when the key set is reasonably small. Although it has asymtotically optimal worst-case running time for all of the *dictionary* operations, if the set of possible keys is huge (or can be infinite), it's impractical to use this data structure. Another downside is that there are often many empty slots in the table, which is a big waste of memory.
