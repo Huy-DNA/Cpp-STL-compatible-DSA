@@ -6,3 +6,4 @@ This is where I store my C++ implementations of data structures and solutions to
 
 Things I've learnt from this:
 * When testing written C++ libraries, always include it first before any other standard library. This way, you can figure out what standard library you forget to include in your written libraries.
+* Consider adding constant version of any methods you're writing if it's possible. There are some cases in which it's necessary but hard to see why. Look at the README file of "Direct-addressing table - No Null Marking".
