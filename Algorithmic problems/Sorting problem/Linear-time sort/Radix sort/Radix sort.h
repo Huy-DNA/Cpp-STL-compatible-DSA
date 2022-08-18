@@ -1,10 +1,10 @@
 #ifndef __RADIX_SORT_HELL__
 #define __RADIX_SORT_HELL__
 
+#include "Stable sort.h"
 #include <type_traits>
 #include <functional>
 #include <iterator>
-#include "Stable sort.h"
 
 /*This function require that all elements or the fields 'key' of them be positive and of intergral type.
  The third parameter specifies the upper bound of the elements or their 'key' values, so that they lie within [0, k].*/
