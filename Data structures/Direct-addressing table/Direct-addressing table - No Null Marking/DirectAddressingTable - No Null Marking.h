@@ -1,7 +1,7 @@
 #ifndef __DIRECT_ADDRESSING_TABLE_NO_NULL_MARKING_HELL__
 #define __DIRECT_ADDRESSING_TABLE_NO_NULL_MARKING_HELL__
 
-#include "../../../CppUtilities/UIntegralInferator/UIntInfer.h"
+#include "../../../CppUtilities/Unsigned Integral Inferator/UIntInfer.h"
 #include "../../Dynamic table/DynamicTable.h"
 #include <type_traits>
 #include <stdexcept>
