@@ -1,7 +1,7 @@
 # Direct Addressing Table
 Notes about this implementation of Direct-addressing Table (`DirectAddressingTable`):
-* Supported operations and their computational complexity: With $K_MAX$ being the maximum key.
-    * *Initialization*: $\Theta(K_MAX)$ time, $\Theta(K_MAX)$ space
+* Supported operations and their computational complexity: With $k$ being the maximum key.
+    * *Initialization*: $\Theta(k)$ time, $\Theta(k)$ space
     * **SEARCH**: `DirectAddressingTable::operator[](key)`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(1)$
