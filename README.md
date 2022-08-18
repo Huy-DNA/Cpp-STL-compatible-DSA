@@ -11,6 +11,7 @@ This is where I store my C++ implementations of data structures and solutions to
 
 ## Some works done
 * [Compact List and Fast probabilistic search on Linked List](https://github.com/HuyDNA/DSA/tree/main/Data%20structures/Linked%20list/Compact%20list)
+* [Smallest Unsigned Integral Type Inferator for a given number](https://github.com/HuyDNA/DSA/tree/main/CppUtilities/Unsigned%20Integral%20Inferator)
 
 ## My plan
 1. Implements anything I've learned, in a style that is consistent with the already done work. At the time I write this (19/08/2022), I've implemented `DynamicTable`, `Queue`, `Stack`, `LinkedList`, `CompactList`, `DirectAddressingTable`, many sorting algorithms, a select algorithm, here and there some variants of the aforementions.
