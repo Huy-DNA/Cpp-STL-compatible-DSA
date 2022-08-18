@@ -1,4 +1,4 @@
-# Data Structures
+# Data Structures ⚒️🧱🏠
 
 Data Structures are wonderful and exciting! They're essentially ways of organizing data so that you can perform interested actions (**queries**, **modifying operations**) efficiently on your data. We, human have been doing this for centuries - just that now we're automating the process on a computer!!!
 
