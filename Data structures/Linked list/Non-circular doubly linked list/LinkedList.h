@@ -45,7 +45,7 @@ class LinkedList {
     }
     
     template <typename T>
-    LinkedListNonConstBiIter<Elem_T> search(const T& t, const std::function<bool(const Elem_T&, const T&)>& eq) {
+    LinkedListNonConstBiIter<Elem_T> search(const T& t, const std::function<bool(const Elem_T&, const T&)>& eq = [](const Elem_T& e, const T& t) { return e == t; }) {
         Node* cur = _head;
         while (cur != _NIL && !eq(cur->data, t))
             cur = cur->next;
@@ -97,14 +97,16 @@ class LinkedList {
     }
 
     /*Removes an element at a position.*/
-    void remove(LinkedListNonConstBiIter<Elem_T> pos) {
+    Elem_T remove(LinkedListNonConstBiIter<Elem_T> pos) {
         if (pos._node == _NIL) throw std::runtime_error{"LinkedList::remove() called on invalid position."};
         //Note that if pos.node == _tail, because _tail is a reference to pos.node->next->prev, there's no need to manually set it.
         //Note that if pos.node == _head, because _head is a reference to pos.node->prev->next, there's no need to manually set it.
         --_size;
         pos._node->prev->next = pos._node->next;
         pos._node->next->prev = pos._node->prev;
+        Elem_T res = pos._node->data;
         delete pos._node;
+        return res;
     }
 
     /*Removes and returns the element at the start of the list.*/
@@ -186,6 +188,9 @@ template <typename Elem_T,
 class LinkedListNonConstBiIter {
     friend class LinkedList<Elem_T>;
 public:
+    operator bool() const {
+        return _node != nullptr;
+    }
     bool operator==(LinkedListNonConstBiIter other) const {
         return other._node == _node;
     }
