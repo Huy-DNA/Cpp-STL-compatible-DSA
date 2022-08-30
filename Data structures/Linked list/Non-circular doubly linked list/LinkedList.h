@@ -44,6 +44,15 @@ class LinkedList {
         return {cur};
     }
     
+    template <typename T>
+    LinkedListNonConstBiIter<Elem_T> search(const T& t, const std::function<bool(const Elem_T&, const T&)>& eq) {
+        Node* cur = _head;
+        while (cur != _NIL && !eq(cur->data, t))
+            cur = cur->next;
+        if (cur == _NIL) cur = nullptr;         //truly indicates that no element was found.
+        return {cur};
+    }
+    
     /*Pushes an element at the end of the list.*/
     void push_back(const Elem_T& e) {
         ++_size;
