@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <stdexcept>
 #include <iterator>
-
+#include <functional>
 /*Iterator class representing pointers to list elements.*/
 
 template <typename Elem_T,
@@ -36,9 +36,9 @@ class LinkedList {
     }
 
     /*Returns an iterator to the first element whose value equals e.*/
-    LinkedListNonConstBiIter<Elem_T> search(const Elem_T& e) {
+    LinkedListNonConstBiIter<Elem_T> search(const Elem_T& e, const std::function<bool(const Elem_T&, const Elem_T&)>& eq = [](const Elem_T& e1, const Elem_T& e2) { return e1 == e2; }) {
         Node* cur = _head;
-        while (cur != _NIL && cur->data != e)
+        while (cur != _NIL && !eq(cur->data, e))
             cur = cur->next;
         if (cur == _NIL) cur = nullptr;         //truly indicates that no element was found.
         return {cur};
