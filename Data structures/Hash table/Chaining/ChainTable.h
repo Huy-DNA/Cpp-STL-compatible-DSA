@@ -51,7 +51,7 @@ public:
         return list.remove(key_pos).value;
     }
 private:
-    std::size_t hash(const Key_T& key) {
+    std::size_t hash(const Key_T& key) const {
         return _key_hasher(key) % TABLE_SIZE;
     }
 
