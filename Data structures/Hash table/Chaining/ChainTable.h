@@ -21,7 +21,7 @@ class ChainTable {
         }
     };
 public:
-    Value_T operator[](const Key_T& key) {
+    Value_T& operator[](const Key_T& key) {
         const size_t id = hash(key);
         LinkedList<KeyValuePair>& list = _table[id];        // The slot that `key` hashes to
 
