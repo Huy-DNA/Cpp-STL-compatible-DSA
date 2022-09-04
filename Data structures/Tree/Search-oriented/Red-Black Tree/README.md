@@ -6,7 +6,19 @@
     * **INSERT**: `RedBlackTree::insert(element)` 
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(\lg n)$
-    * **DELETE**: `LinkedList::remove(iterator)`
+    * **DELETE**: `RedBlackTree::remove(iterator)`
+        * Worst-case auxiliary space: $\Theta(1)$
+        * Worst-case running time: $\Theta(\lg n)$
+    * **MINIMUM**: `RedBlackTree::minimum()`
+        * Worst-case auxiliary space: $\Theta(1)$
+        * Worst-case running time: $\Theta(\lg n)$
+    * **MAXIMUM**: `RedBlackTree::maximum()`
+        * Worst-case auxiliary space: $\Theta(1)$
+        * Worst-case running time: $\Theta(\lg n)$
+    * **SUCCESSOR**: `RedBlackTree::succesor()`
+        * Worst-case auxiliary space: $\Theta(1)$
+        * Worst-case running time: $\Theta(\lg n)$
+    * **PREDECESSOR**: `RedBlackTree::predecessor()`
         * Worst-case auxiliary space: $\Theta(1)$
         * Worst-case running time: $\Theta(\lg n)$
 * Other technical:
