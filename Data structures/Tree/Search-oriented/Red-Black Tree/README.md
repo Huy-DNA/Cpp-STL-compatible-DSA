@@ -25,10 +25,11 @@
     * Only works with elements of `TriviallyCopyableType`.
 
 Things I want to improve:
+* Is static data member's out-of-class definition of a class template inline?
 * Using `const_cast` is bad and my current design makes it unable to provide const version of all methods of the class!
 * Currently, most class methods accept an argument of a user-defined Iterator type. This type is just acting as a safe wrapper around an internal `Node` pointer so that outside users can not modify the internal data, otherwise, Red Black Tree's assumptions would be violated. However, this leads to the mentioned-above problem and some cumbersome situation, like this one in `RedBlackTree::remove()`:
 ```C++
-Node* m = _extract_Node(minimum_at_subtree(_create_ConstBiIter(node->right)));
+Node* m = _extract_Node(minimum_at_subtree(_create_ConstRBBiIter(node->right)));
 ```
 
 Things I've learnt anyways:
