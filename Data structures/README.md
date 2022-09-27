@@ -7,3 +7,4 @@ My goal is to:
 
 Things I want to improve:
 * Provide constant version of various class methods where possible. For example: `LinkedList::search`, `ChainTable::search`, .etc.
+* Alert! I seems to forget to define CopyConstructor properly.
