@@ -7,7 +7,7 @@ Notes about this implementation of shell sort:
 * Space complexity: 
     * Worst-case: $O(1)$
 * Other technical:
-    * Not stable
+    * Unstable
     * In-place
     * Only works with random-access iterators (in C++ terminology)
 
