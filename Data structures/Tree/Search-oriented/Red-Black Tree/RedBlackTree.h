@@ -78,7 +78,7 @@ public:
         Node* node = _extract_Node(iter);
 
         if (node == _NIL)
-            throw std::runtime_error{"RedBlackTree::remove() called on null pointer."};
+            throw std::runtime_error{"Redblacktree::remove() called on null pointer."};
         
         Node* to_be_fixed;                  // Node that needs fixing after deletion 
         Color original_color = node->color; // Color of to be moved-or-removed node
@@ -355,7 +355,7 @@ private:
     }
 
     Node* _extract_Node(ConstRBBiIter iter) {
-        return const_cast<Node*>(iter._node);       //Bad: ConstRBBiIter cast but...
+        return const_cast<Node*>(iter._node);       //Bad: const_cast but...
     }
     Node* _root = _NIL;
     const Comp_T _less{};
@@ -386,12 +386,12 @@ public:
     }
 
     ConstRBBiIter operator++() {
-        _node = _owner.successor({_node, _owner})._node;
+        _node = _owner.successor(*this)._node;
         return *this;
     }
 
     ConstRBBiIter operator--() {
-        _node = _owner.predecessor({_node, _owner})._node;
+        _node = _owner.predecessor(*this)._node;
         return *this;
     }
 
