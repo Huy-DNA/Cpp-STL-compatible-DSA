@@ -25,6 +25,10 @@ class AVLTree {
         size_t height;          // maximum level + 1
     };
 public:
+    AVLTree() = default;
+    AVLTree(const AVLTree&) = delete;
+    AVLTree& operator=(const AVLTree&) = delete;
+    
     ConstAVLBiIter search(const Elem_T& e) {
         Node* cur = _root;
         while (cur != _NIL && cur->data != e) {

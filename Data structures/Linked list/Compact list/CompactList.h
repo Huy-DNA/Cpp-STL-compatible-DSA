@@ -31,6 +31,10 @@ class CompactList {
     constexpr static long long _NIL = -1;       //index representing the sentinel
     constexpr static long long _INVALID = -2;   //index representing invalid elements (non-existent)
 public:
+    CompactList() = default;
+    CompactList(const CompactList&) = delete;
+    CompactList& operator=(const CompactList&) = delete;
+    
     ~CompactList() {
         delete[] _buffer;
     }

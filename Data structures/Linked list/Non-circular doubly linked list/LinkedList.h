@@ -26,7 +26,11 @@ class LinkedList {
         Node* prev;
     };
 
-   public:
+    public:
+    LinkedList() = default;
+    LinkedList(const LinkedList&) = delete;
+    LinkedList& operator=(const LinkedList&) = delete;
+
     ~LinkedList() {
         while (_head != _NIL) {
             Node* cur = _head->next;

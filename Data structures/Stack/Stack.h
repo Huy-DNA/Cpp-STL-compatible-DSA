@@ -9,6 +9,10 @@ template <typename Elem_T>
 class Stack {
     typedef std::size_t size_t;
 public:
+    Stack() = default;
+    Stack(const Stack&) = delete;
+    Stack& operator=(const Stack&) = delete;
+
     /*Pushes the passed element to the stack.*/
     void push(const Elem_T& e) {
         _dy_buffer.push_back(e);

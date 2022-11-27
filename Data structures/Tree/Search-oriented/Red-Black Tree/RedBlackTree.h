@@ -32,6 +32,10 @@ class RedBlackTree {
         Color color;
     };
 public:
+    RedBlackTree() = default;
+    RedBlackTree(const RedBlackTree&) = delete;
+    RedBlackTree& operator=(const RedBlackTree&) = delete;
+    
     ~RedBlackTree() {
         _deallocate_node(_root);
     }

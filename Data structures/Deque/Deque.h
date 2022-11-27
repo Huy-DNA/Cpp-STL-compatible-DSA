@@ -12,6 +12,7 @@ class Deque {
 public:
     Deque() = default;
     Deque(const Deque&) = delete;
+    Deque& operator=(const Deque&) = delete;
     ~Deque() {
         delete[] _buffer;
     }
