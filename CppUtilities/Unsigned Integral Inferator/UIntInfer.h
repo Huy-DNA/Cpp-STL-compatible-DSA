@@ -20,7 +20,7 @@ constexpr auto uint_infer() {
 }
 
 template <std::size_t n>
-using UIntInfer = std::remove_reference_t<decltype(uint_infer<n>())>;
+using UIntInfer = std::remove_reference_t<decltype(infer<n>())>;
 
 #endif
  

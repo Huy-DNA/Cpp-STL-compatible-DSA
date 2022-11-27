@@ -95,7 +95,7 @@ private:
         _capacity /= 2;
     }
 
-void _copy_to_sec_buffer(Elem_T* sec_buffer) const {
+    void _copy_to_sec_buffer(Elem_T* sec_buffer) const {
         for (size_t i = 0; i < _size; ++i) {
             sec_buffer[i] = _buffer[_inc_wrap(_head, i)];
         }
