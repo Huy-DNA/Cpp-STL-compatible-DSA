@@ -14,6 +14,5 @@ We're very welcome for any contribution to the repo. We love to learn and enjoy 
 ## More algorithms & data structures
 * Please make it as generic as possible and play nice with the STL.
 * Fun little utility can be put into `CppUtilities`
-* Fun algorithmic leetcode problem can be put in `Leetcode` (if you want to write a blog about it), but LeetCode wasn't intended to be in this repo LOL.
 
 Thanks for any contribution!
