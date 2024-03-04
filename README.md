@@ -4,6 +4,10 @@ This is where I store my C++ implementations of data structures and solutions to
 * My aim is to code as generic as possible, so I'll utilize template and SFINAE in this. I'm pretty much interested in this so-called metaprogramming thing though &#128541; It often goes like "woaahhh!? Did I just write those awfully beautiful SFINAE???" &#129325;
 * I'll try to provide as much information as possible in a README file for each implementation here. It's a way that I revise things and might turn out useful in the future!? &#129488;
 
+## Philosophy
+* The code is intended to be as generic as possible, that is they can be used with all possible data types (except in some cases that my current knowledge doesn't allow me to).
+* The code must be compatible the STL, that is you can call `sort` from `<algorithm` on my data structures that support random access, or you can call my sorting algorithms on the standard `vector` or `array` class.
+
 ## What I've learnt from this
 * Always include self-written libraries first before any other standard libraries.
 * Consider adding constant version of any methods you're writing if it's possible. See my notes at [Direct-addressing table - No Null Marking](https://github.com/HuyDNA/DSA/tree/main/Data%20structures/Direct-addressing%20table).
