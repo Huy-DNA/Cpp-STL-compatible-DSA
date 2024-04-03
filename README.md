@@ -6,7 +6,7 @@ This is where I store my C++ implementations of data structures and solutions to
 
 ## Philosophy
 * The code is intended to be as generic as possible, that is they can be used with all possible data types (except in some cases that my current knowledge doesn't allow me to).
-* The code must be compatible the STL, that is you can call `sort` from `<algorithm` on my data structures that support random access, or you can call my sorting algorithms on the standard `vector` or `array` class.
+* The code must be compatible the STL, that is you can call `sort` from `<algorithm>` on my data structures that support random access, or you can call my sorting algorithms on the standard `vector` or `array` class.
 
 ## What I've learnt from this
 * Always include self-written libraries first before any other standard libraries.
